@@ -42,3 +42,21 @@ terraform.rc
 # Optional: ignore plan files saved before destroying Terraform configuration
 # Uncomment the line below if you want to ignore planout files.
 # planout
+
+# --- Credenciales y secretos (nunca versionar) ---
+*.pem
+*.p12
+*.key
+*-key.json
+*_key.json
+credentials.json
+sa-*.json
+gha-creds-*.json
+.env
+.env.*
+!.env.example
+
+# --- Editor / SO ---
+.DS_Store
+.idea/
+.vscode/

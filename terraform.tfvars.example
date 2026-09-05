@@ -1,0 +1,3 @@
+project_id = "solventa-admin"
+region     = "southamerica-east1"
+github_org = "MISO4Bits"
