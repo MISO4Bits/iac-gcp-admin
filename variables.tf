@@ -23,6 +23,10 @@ variable "image_publisher_repos" {
     "svc-core",
     "svc-cotizacion",
     "svc-perfilamiento",
+    "svc-productos",
+    "svc-distribucion",
     "bff-web",
+    "bff-mobile",
+    "api-partner",
   ]
 }
