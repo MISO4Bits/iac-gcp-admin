@@ -49,28 +49,8 @@ resource "google_service_account" "ci_image_publisher" {
   description  = "Usada por los pipelines de CI para publicar imágenes en Artifact Registry (DI-004)."
 }
 
-# Único permiso: escribir en el repositorio de Artifact Registry.
-resource "google_artifact_registry_repository_iam_member" "ci_image_publisher_writer" {
-  project    = var.project_id
-  location   = google_artifact_registry_repository.solventa.location
-  repository = google_artifact_registry_repository.solventa.repository_id
-  role       = "roles/artifactregistry.writer"
-  member     = "serviceAccount:${google_service_account.ci_image_publisher.email}"
-}
-
 # Vinculación acotada por repositorio: cada repo de servicio que publica
-# imágenes se agrega explícitamente a esta lista (DI-004).
-variable "image_publisher_repos" {
-  description = "Repositorios de GitHub autorizados a publicar imágenes en Artifact Registry vía Workload Identity Federation (DI-004)."
-  type        = list(string)
-  default = [
-    "svc-core",
-    "svc-cotizacion",
-    "svc-perfilamiento",
-    "bff-web",
-  ]
-}
-
+# imágenes se agrega explícitamente a var.image_publisher_repos (DI-004).
 resource "google_service_account_iam_member" "ci_image_publisher_workload_identity" {
   for_each = toset(var.image_publisher_repos)
 

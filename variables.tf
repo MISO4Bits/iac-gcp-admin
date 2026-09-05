@@ -15,3 +15,14 @@ variable "github_org" {
   type        = string
   default     = "MISO4Bits"
 }
+
+variable "image_publisher_repos" {
+  description = "Repositorios de GitHub autorizados a publicar imágenes en Artifact Registry vía Workload Identity Federation (DI-004)."
+  type        = list(string)
+  default = [
+    "svc-core",
+    "svc-cotizacion",
+    "svc-perfilamiento",
+    "bff-web",
+  ]
+}

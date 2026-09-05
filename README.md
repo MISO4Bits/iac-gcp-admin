@@ -22,3 +22,22 @@ terraform apply
 
 `terraform.tfvars` no se versiona (ver `.gitignore`) — ajustar ahí cualquier valor distinto al de los defaults en `variables.tf`.
 
+## Estructura
+
+```
+iac-gcp-admin/
+├── modules/                 # una carpeta por pieza reusable, con su propia interfaz (variables/outputs)
+│   ├── artifact_registry/
+│   └── workload_identity/
+├── main.tf                  # raíz: solo instancia módulos y conecta sus salidas
+├── backend.tf
+├── providers.tf
+├── variables.tf
+├── outputs.tf
+└── versions.tf
+```
+
+Este repo representa **un solo ambiente** (`admin`, DI-003) — no hay carpeta `environments/`, porque no hace falta: cada ambiente ya es su propio repositorio (`iac-gcp-admin`, `iac-gcp-dev`, `iac-gcp-prod`), cada uno con su propio estado. `modules/` no se comparte entre esos repos (duplicación aceptada a propósito en DI-003, a cambio de independencia total).
+
+Convención al agregar un módulo nuevo: cada uno declara sus propias `variables.tf`/`outputs.tf` y no conoce a los demás; cualquier recurso que conecte dos módulos (por ejemplo, un permiso de IAM entre una cuenta de servicio de un módulo y un recurso de otro) vive en el `main.tf` de la raíz, no dentro de ningún módulo.
+
