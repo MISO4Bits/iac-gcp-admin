@@ -3,7 +3,7 @@
 # "Crear los buckets de estado de Terraform".
 terraform {
   backend "gcs" {
-    bucket = "4bits-tfstate-admin"
+    bucket = "solventa-admin-tfstate"
     prefix = "infra"
   }
 }
