@@ -28,5 +28,6 @@ variable "image_publisher_repos" {
     "bff-web",
     "bff-mobile",
     "api-partner",
+    "fn-notificaciones",
   ]
 }
