@@ -29,6 +29,7 @@ variable "image_publisher_repos" {
     "bff-mobile",
     "api-partner",
     "fn-notificaciones",
+    "fn-documentos",
     "fe-web", # publica el portal en Cloud Storage (DI-012), no una imagen
   ]
 }
