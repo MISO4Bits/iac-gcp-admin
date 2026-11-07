@@ -30,6 +30,7 @@ variable "image_publisher_repos" {
     "api-partner",
     "fn-notificaciones",
     "fn-documentos",
-    "fe-web", # publica el portal en Cloud Storage (DI-012), no una imagen
+    "fe-web",        # publica el portal en Cloud Storage (DI-012), no una imagen
+    "fe-backoffice", # publica el backoffice en Cloud Storage (BITS-388), no una imagen
   ]
 }
